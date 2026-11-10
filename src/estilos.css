@@ -1,0 +1,205 @@
+:root {
+  --cor-primaria: #b45309;
+  --cor-primaria-escura: #92400e;
+  --cor-texto: #292524;
+  --cor-suave: #78716c;
+  --cor-borda: #e7e5e4;
+  --cor-fundo: #fafaf9;
+  --cor-branco: #fff;
+  --cor-lido: #15803d;
+  --cor-erro: #b91c1c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  line-height: 1.5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  font-family: system-ui, sans-serif;
+}
+
+.pagina {
+  width: min(92%, 64rem);
+  margin-inline: auto;
+  padding: 2rem 0 3rem;
+}
+
+.cabecalho {
+  margin-bottom: 1.5rem;
+}
+.cabecalho h1 {
+  font-size: 2.25rem;
+}
+.cabecalho span {
+  color: var(--cor-primaria);
+}
+.cabecalho p {
+  color: var(--cor-suave);
+}
+
+.conteudo {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Lista */
+.lista {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.livro {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-primaria);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+}
+.livro__info {
+  grid-column: 1 / -1;
+}
+.livro__titulo {
+  font-size: 1.125rem;
+}
+.livro__autor {
+  color: var(--cor-suave);
+  font-style: italic;
+}
+
+.etiqueta {
+  justify-self: start;
+  border: 1px solid var(--cor-suave);
+  background: none;
+  color: var(--cor-suave);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.etiqueta--lido {
+  border-color: var(--cor-lido);
+  background: var(--cor-lido);
+  color: var(--cor-branco);
+}
+
+.livro__remover {
+  border: 0;
+  background: none;
+  color: var(--cor-erro);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+}
+.livro__remover:hover {
+  background: #fee2e2;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* Formulário */
+.formulario {
+  background: var(--cor-branco);
+  border: 1px solid var(--cor-borda);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-family: system-ui, sans-serif;
+}
+.formulario__titulo {
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.formulario label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.formulario input,
+.formulario select {
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #d6d3d1;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: var(--cor-branco);
+}
+.formulario input:focus,
+.formulario select:focus {
+  outline: 2px solid var(--cor-primaria);
+  border-color: transparent;
+}
+
+.botao {
+  margin-top: 0.25rem;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-weight: 700;
+  color: var(--cor-branco);
+  background: var(--cor-primaria);
+  cursor: pointer;
+}
+.botao:hover:not(:disabled) {
+  background: var(--cor-primaria-escura);
+}
+
+.aviso {
+  background: var(--cor-branco);
+  border: 1px dashed var(--cor-borda);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--cor-suave);
+}
+.erro {
+  color: var(--cor-erro);
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+.erro--geral {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Tablet: título, status e remover na mesma linha */
+@media (min-width: 40em) {
+  .livro {
+    grid-template-columns: 1fr auto auto;
+  }
+  .livro__info {
+    grid-column: auto;
+  }
+}
+
+/* Desktop: formulário ao lado */
+@media (min-width: 60em) {
+  .conteudo {
+    grid-template-columns: 1fr 18rem;
+    align-items: start;
+  }
+}
